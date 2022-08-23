@@ -1,0 +1,98 @@
+// Variables
+@use "../abstracts/variables" as *;
+
+// Functions
+@use "../abstracts/functions" as *;
+
+// Mixins
+@use "../abstracts/mixins" as *;
+
+.footer {
+  background-color: color(grey-dark-2);
+  padding: 10rem 0;
+  font-size: 1.4rem;
+  color: color(grey-light-1);
+
+  // change the padding for portrait tablets and lower
+  @include respondDeviceWidth(tab-port) {
+    padding: 8rem 0;
+  }
+
+  &__logo-box {
+    text-align: center;
+    margin-bottom: 8rem;
+
+    @include respondDeviceWidth(tab-port) {
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__logo {
+    width: 15rem;
+    height: auto;
+  }
+
+  &__navigation {
+    border-top: 1px solid color(grey-dark-1);
+    padding-top: 2rem;
+    margin-left: 2rem;
+    display: inline-block;
+
+    @include respondDeviceWidth(tab-port) {
+      margin-left: 0;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      color: color(grey-light-1);
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    &:hover,
+    &:active {
+      color: color(primary);
+      box-shadow: 0 1rem 2rem rgba(colorValue(primary-black), 0.4);
+    }
+  }
+
+  &__copyright {
+    color: color(grey-light-1);
+    border-top: 1px solid color(grey-dark-1);
+    padding-top: 2rem;
+    margin-right: 2rem;
+    display: inline-block;
+    width: 80%;
+    float: right;
+
+    @include respondDeviceWidth(tab-port) {
+      margin-right: 0;
+      width: 100%;
+      float: none;
+    }
+
+    &--center-align {
+      @include respondDeviceWidth(phone) {
+        text-align: center;
+      }
+    }
+  }
+}

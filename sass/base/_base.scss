@@ -1,0 +1,74 @@
+// Variables
+@use "../abstracts/variables" as *;
+
+// Mixins
+@use "../abstracts/mixins" as *;
+
+// Root variables
+// ripped CSS4 vars out of color map
+:root {
+  /* colors */
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+  /* opacities */
+  @each $name, $opacity in $opacities {
+    --opacity-#{$name}: #{$opacity};
+  }
+  /* grid values */
+  @each $name, $grid-value in $grid {
+    --grid-#{$name}: #{$grid-value};
+  }
+  /* font-sizes */
+  @each $name, $font-size in $font-sizes {
+    --font-#{$name}: #{$font-size};
+  }
+  /* device-breakpoints */
+  @each $name, $breakpoint in $device-breakpoints {
+    --device-breakpoint-#{$name}: #{$breakpoint};
+  }
+}
+
+// Resets and general stylings
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  // this makes sure everything has box-sizing border box
+  box-sizing: inherit;
+}
+
+html {
+  // this defines what 1 rem is
+  font-size: 62.5%; // 1 rem === 10px
+
+  // rem media queries
+  @include respondDeviceWidth(tab-land) {
+    font-size: 56.25%; // 1rem === 9px
+  }
+
+  @include respondDeviceWidth(tab-port) {
+    font-size: 50%; // 1 rem === 8px
+  }
+
+  @include respondDeviceWidth(lrg-desktop) {
+    font-size: 75%; // 1rem === 12px
+  }
+
+  // enable smooth scrolling
+  scroll-behavior: smooth;
+}
+
+body {
+  // This makes sure width of elements doesn't include padding and border
+  box-sizing: border-box;
+  // body padding
+  padding: 3rem;
+
+  // get rid of padding for portrait tablets
+  @include respondDeviceWidth(tab-port) {
+    padding: 0;
+  }
+}

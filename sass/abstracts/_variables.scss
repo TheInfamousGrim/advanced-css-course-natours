@@ -1,0 +1,42 @@
+// variable color map in sass
+$colors: (
+  primary: #55c57a,
+  primary-light: #7ed56f,
+  primary-dark: #28b485,
+  secondary-light: #ffb900,
+  secondary-dark: #ff7730,
+  tertiary-light: #2998ff,
+  tertiary-dark: #5643fa,
+  grey-dark: #777,
+  grey-dark-1: #999,
+  grey-dark-2: #333,
+  grey-light-1: #f7f7f7,
+  grey-light-2: #eee,
+  primary-white: #fff,
+  primary-black: #000,
+);
+
+// variable opacity map in sass
+$opacities: (
+  primary-bg-img: 0.8,
+  btn-hover: 0.2,
+);
+
+// grid
+$grid: (
+  width: 114rem,
+  gutter-vertical: 8rem,
+  gutter-vertical-small: 6rem,
+  gutter-horizontal: 6rem,
+);
+
+$font-sizes: (
+  default: 1.6rem,
+);
+
+$device-breakpoints: (
+  phone: 37.5em,
+  tab-port: 56.25em,
+  tab-land: 75em,
+  lrg-desktop: 112.5em,
+);

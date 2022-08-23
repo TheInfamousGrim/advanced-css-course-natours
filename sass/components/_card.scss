@@ -1,0 +1,271 @@
+// variables
+@use "../abstracts/variables" as *;
+
+// functions
+@use "../abstracts/functions" as *;
+
+// mixins
+@use "../abstracts/mixins" as *;
+
+.card {
+  // functionality
+  height: 52rem;
+  -moz-perspective: 150rem;
+  -webkit-perspective: 150rem;
+  perspective: 150rem;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+
+  position: relative;
+
+  &__side {
+    color: color(grey-dark);
+    font-size: 2rem;
+
+    height: 52rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    border-radius: 2rem;
+    box-shadow: 0 1.5rem 4rem rgba(colorValue(primary-black), 0.15);
+
+    // FRONT SIDE CARD COLOR
+    &--front {
+      background-color: color(primary-white);
+    }
+
+    // BACK SIDE BEFORE HOVER TRANSFORMATION
+    &--back {
+      transform: rotateY(180deg);
+
+      // BACK SIDE CARD 1 BACKGROUND COLOR
+      &-1 {
+        background-image: linear-gradient(
+          135deg,
+          color(secondary-light),
+          color(secondary-dark)
+        );
+      }
+
+      // BACK SIDE CARD 2 BACKGROUND COLOR
+      &-2 {
+        background-image: linear-gradient(
+          135deg,
+          color(primary-light),
+          color(primary-dark)
+        );
+      }
+
+      // BACK SIDE CARD 3 BACKGROUND COLOR
+      &-3 {
+        background-image: linear-gradient(
+          135deg,
+          color(tertiary-light),
+          color(tertiary-dark)
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    transform: rotateY(0deg);
+  }
+
+  // FRONT SIDE CARDS BACKGROUND IMG FORMATTING
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    border-radius: 2rem 2rem 0 0;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    // FRONT SIDE CARD 1 BACKGROUND IMG
+    &--1 {
+      background-image: linear-gradient(
+          135deg,
+          color(secondary-light),
+          color(secondary-dark)
+        ),
+        url(./../img/nat-5.jpg);
+    }
+
+    // FRONT SIDE CARD 2 BACKGROUND IMG
+    &--2 {
+      background-image: linear-gradient(
+          135deg,
+          color(primary-light),
+          color(primary-dark)
+        ),
+        url(./../img/nat-6.jpg);
+    }
+
+    // FRONT SIDE CARD 3 BACKGROUND IMG
+    &--3 {
+      background-image: linear-gradient(
+          135deg,
+          color(tertiary-light),
+          color(tertiary-dark)
+        ),
+        url(./../img/nat-7.jpg);
+    }
+  }
+
+  // FRONT SIDE CARD HEADING
+  &__heading {
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: color(primary-white);
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+  }
+
+  // FIRST CARD FRONT HEADING
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    // FRONT SIDE CARD 1 HEADING
+    &--1 {
+      background-image: linear-gradient(
+        135deg,
+        rgba(colorValue(secondary-light), 0.85),
+        rgba(colorValue(secondary-dark), 0.85)
+      );
+    }
+
+    // FRONT SIDE CARD 2 HEADING
+    &--2 {
+      background-image: linear-gradient(
+        135deg,
+        rgba(colorValue(primary-light), 0.85),
+        rgba(colorValue(primary-dark), 0.85)
+      );
+    }
+
+    // FRONT SIDE CARD 3 HEADING
+    &--3 {
+      background-image: linear-gradient(
+        135deg,
+        rgba(colorValue(tertiary-light), 0.85),
+        rgba(colorValue(tertiary-dark), 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid color(grey-light-2);
+        }
+      }
+    }
+  }
+
+  // BACK SIDE FORMATTING
+  &__cta {
+    @include absCenter;
+    width: 90%;
+    text-align: center;
+  }
+
+  &__price-box {
+    text-align: center;
+    color: color(primary-white);
+    margin-bottom: 8rem;
+  }
+
+  &__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  &__price-value {
+    font-size: 6rem;
+    font-weight: 300;
+  }
+
+  // MEDIA QUERY REWRITE
+  @include respondDeviceWidth(tab-port) {
+    // functionality
+    height: auto;
+    background-color: color(primary-white);
+    border-radius: 2rem;
+    box-shadow: 0 1.5rem 4rem rgba(colorValue(primary-black), 0.15);
+
+    &__details {
+      padding: 1rem;
+    }
+
+    &__side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+      background-color: color(primary-white);
+      border-radius: 0 0 2rem 2rem;
+
+      // FRONT SIDE BORDER RADIUS
+      &--front {
+        border-radius: 2rem 2rem 0rem 0rem;
+      }
+
+      // BACK SIDE GENERAL
+      &--back {
+        transform: rotateY(0deg);
+        border-radius: 0 0 2rem 2rem;
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &:hover &__side--front {
+      transform: rotateY(0deg);
+    }
+
+    &:hover &__side--back {
+      transform: rotateY(0deg);
+    }
+
+    // BACK SIDE FORMATTING
+    &__cta {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      text-align: center;
+      padding: 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 6rem;
+      font-weight: 300;
+    }
+  }
+}

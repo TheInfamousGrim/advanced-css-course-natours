@@ -1,0 +1,42 @@
+// built in modules
+@use "sass:map";
+
+@use "../abstracts/variables" as *;
+
+// COLOR FUNCTIONS
+// function to access colors css variables
+@function color($color-name) {
+  @return var(--color-#{$color-name});
+}
+
+// function to access color variable values
+@function colorValue($color-name) {
+  @return map.get($colors, "#{$color-name}");
+}
+
+// OPACITY FUNCTIONS
+// function to access opacity values from root variables
+@function alphaColor($color-name, $alpha-value) {
+  @return rgba(
+    map.get($colors, "#{$color-name}"),
+    map.get($opacities, "#{$alpha-value}")
+  );
+}
+
+// GRID FUNCTIONS
+// function to access grid variables
+@function grid($grid-value) {
+  @return var(--grid-#{$grid-value});
+}
+
+// FONT FUNCTIONS
+// function to access font size variables
+@function fontSize($size) {
+  @return var(--font-#{$size});
+}
+
+// DEVICE BREAKPOINT FUNCTIONS
+// function to access device breakpoint variables
+@function deviceBreakpoint($breakpoint) {
+  @return map.get($device-breakpoints, "#{$breakpoint}");
+}

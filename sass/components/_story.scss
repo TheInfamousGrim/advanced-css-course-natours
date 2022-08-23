@@ -1,0 +1,90 @@
+// variables
+@use "../abstracts/variables" as *;
+
+// functions
+@use "../abstracts/functions" as *;
+
+// mixins
+@use "../abstracts/mixins" as *;
+
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba(colorValue(primary-black), 0.1);
+  background-color: rgba(colorValue(primary-white), 0.6);
+  border-radius: 2rem;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: fontSize(default);
+  transform: skewX(-12deg);
+
+  // RESET FOR TABLETS
+  @include respondDeviceWidth(tab-port) {
+    width: 90%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  // GENERAL RESET FOR PHONES
+  @include respondDeviceWidth(phone) {
+    width: 95%;
+    transform: skewX(0);
+  }
+
+  &__shape {
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg);
+
+    // RESET THE SKEWED SHAPE FOR TABLETS
+    @include respondDeviceWidth(phone) {
+      transform: translateX(-3rem) skewX(0deg);
+    }
+  }
+
+  &__img {
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    backface-visibility: hidden;
+    transition: all 0.5s;
+  }
+
+  // INITIAL STATE OF CAPTION
+  &__caption {
+    @include absCenter;
+    color: color(primary-white);
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibility: hidden;
+  }
+
+  // HOVER STATE OF IMG CAPTION
+  &:hover &__caption {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  // HOVER STATE OF IMG
+  &:hover &__img {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%);
+  }
+
+  &__text {
+    transform: skewX(12deg);
+
+    // RESET SKEWED TEXT FOR PHONES
+    @include respondDeviceWidth(phone) {
+      transform: skewX(0);
+    }
+  }
+}

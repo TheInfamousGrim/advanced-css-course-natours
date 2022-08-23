@@ -1,0 +1,106 @@
+// variables
+@use "../abstracts/variables" as *;
+
+// functions
+@use "../abstracts/functions" as *;
+
+// mixins
+@use "../abstracts/mixins" as *;
+
+// main body
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: color(grey-dark);
+}
+
+// heading primary typography
+.heading-primary {
+  color: color(primary-white);
+  text-transform: uppercase;
+
+  /* stops shaky animations */
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+
+  // header main title
+  &--name {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+
+    // get rid of letter spacing and reduce font size
+    @include respondDeviceWidth(phone) {
+      letter-spacing: 1rem;
+      font-size: 5rem;
+    }
+  }
+
+  // header sub title
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out;
+
+    // get rid of letter spacing and reduce font size
+    @include respondDeviceWidth(phone) {
+      letter-spacing: 0.5rem;
+    }
+  }
+}
+
+.heading-secondary {
+  display: inline-block;
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  // give a gradient to the text
+  background-image: linear-gradient(
+    to right,
+    color(primary-light),
+    color(primary-dark)
+  );
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  letter-spacing: 2px;
+  transition: all 0.2s;
+
+  // decrease font size for tablet
+  @include respondDeviceWidth(tab-port) {
+    font-size: 3rem;
+  }
+
+  // decrease font size for phone
+  @include respondDeviceWidth(phone) {
+    font-size: 2.5rem;
+  }
+
+  // hover effect
+  &:hover {
+    transform: translateY(-1.7rem) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem alphaColor(primary-black, btn-hover);
+  }
+}
+
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: fontSize(default);
+
+  &:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
