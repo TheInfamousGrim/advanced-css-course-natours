@@ -20,13 +20,25 @@
 
 .section-features {
   padding: 20rem 2rem;
+  background-size: cover;
   background-image: linear-gradient(
       to right bottom,
       alphaColor(primary, primary-bg-img),
       alphaColor(primary-light, primary-bg-img),
       alphaColor(primary-dark, primary-bg-img)
     ),
-    url(./../../img/nat-4.jpg);
+    url(./../../img/nat-4-sml.jpg);
+
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    background-size: cover;
+    background-image: linear-gradient(
+        to right bottom,
+        alphaColor(primary-light, primary-bg-img),
+        alphaColor(primary-light, primary-bg-img),
+        alphaColor(primary-dark, primary-bg-img)
+      ),
+      url(./../img/nat-4.jpg);
+  }
 
   // skew the entire section
   transform: skewY(-7deg);

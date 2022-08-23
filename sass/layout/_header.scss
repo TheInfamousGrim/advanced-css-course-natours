@@ -17,11 +17,20 @@
       alphaColor(primary-light, primary-bg-img),
       alphaColor(primary-dark, primary-bg-img)
     ),
-    url(./../img/hero.jpg);
+    url(./../img/hero-small.jpg);
   background-size: cover;
   background-position: top;
-
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-width: 125em) {
+    background-image: linear-gradient(
+        to right bottom,
+        alphaColor(primary, primary-bg-img),
+        alphaColor(primary-light, primary-bg-img),
+        alphaColor(primary-dark, primary-bg-img)
+      ),
+      url(./../img/hero.jpg);
+  }
 
   @include respondDeviceWidth(phone) {
     clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
