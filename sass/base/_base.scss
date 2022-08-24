@@ -4,6 +4,9 @@
 // Mixins
 @use "../abstracts/mixins" as *;
 
+// functions
+@use "../abstracts/functions" as *;
+
 // Root variables
 // ripped CSS4 vars out of color map
 :root {
@@ -71,4 +74,9 @@ body {
   @include respondDeviceWidth(tab-port) {
     padding: 0;
   }
+}
+
+::selection {
+  background-color: color(primary);
+  color: color(primary-white);
 }

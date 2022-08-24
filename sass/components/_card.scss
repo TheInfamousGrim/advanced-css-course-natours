@@ -239,7 +239,8 @@
   }
 
   // MEDIA QUERY REWRITE
-  @include respondDeviceWidth(tab-port) {
+  @media only screen and (max-width: deviceBreakpoint(tab-port)),
+    only screen and (hover: none) {
     // functionality
     height: auto;
     background-color: color(primary-white);
